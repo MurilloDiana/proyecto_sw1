@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MetronomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('metronome')->group(function () {
+    Route::post('start', [MetronomeController::class, 'start']);
+    Route::post('stop', [MetronomeController::class, 'stop']);
+    Route::post('tempo', [MetronomeController::class, 'setTempo']);
 });
