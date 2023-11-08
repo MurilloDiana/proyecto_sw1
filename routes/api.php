@@ -29,3 +29,5 @@ Route::prefix('metronome')->group(function () {
     Route::post('stop', [MetronomeController::class, 'stop']);
     Route::post('tempo', [MetronomeController::class, 'setTempo']);
 });
+
+Route::get('');

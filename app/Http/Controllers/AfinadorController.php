@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 class AfinadorController extends Controller {
 
     public function start(){
-        return view();
+        return view('vAfinador');
     }
 
 }
