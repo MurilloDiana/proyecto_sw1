@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MetronomeController;
+use App\Http\Controllers\AfinadorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,4 @@ Route::prefix('metronome')->group(function () {
     Route::post('tempo', [MetronomeController::class, 'setTempo']);
 });
 
-Route::get('');
+Route::get('/afinador',[AfinadorController::class,'start']);
