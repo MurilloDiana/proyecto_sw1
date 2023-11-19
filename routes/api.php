@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\MetronomeController;
 use App\Http\Controllers\AfinadorController;
 
@@ -32,3 +33,5 @@ Route::prefix('metronome')->group(function () {
 });
 
 Route::get('/afinador',[AfinadorController::class,'start']);
+
+Route::post('/login','App\Http\Controllers\UserController@login');

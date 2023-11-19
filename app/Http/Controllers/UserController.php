@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
@@ -12,6 +16,8 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    use HasApiTokens;
+
     public function index()
     {
         $user = User::all();
@@ -134,6 +140,22 @@ class UserController extends Controller
 
         // Respuesta JSON
         return response()->json(['message' => 'Usuario eliminado']);
+    }
+
+    public function login(Request $request){
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']]);
+
+        if(Auth::attempt($credentials)){
+            $user=Auth::user();
+            $toker=$user->createToken('token')->plainTextToken;
+            $cookie  = cookie('cookie_token',$toker,60*24);
+            return response(["token"=>$toker] , Response::HTTP_OK)->withoutCookie($cookie);
+        }else{
+            return response(Response::HTTP_UNAUTHORIZED);
+        }
+
     }
 
 }
