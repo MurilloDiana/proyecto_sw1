@@ -30,10 +30,10 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="https://cdn.jsdelivr.net/npm/aubiojs@0.1.1/build/aubio.min.js"></script>
     <!-- <script src="tuner.js"></script>-->
-    <script src="/js/tuner.js"></script>
-    <script src="/js/meter.js"></script>
-    <script src="/js/frequency-bars.js"></script>
-    <script src="/js/notes.js"></script>
-    <script src="/js/app.js"></script>
+    <script src="{{ asset('js/tuner.js') }}"></script>
+    <script src="{{ asset('js/meter.js') }}"></script> 
+    <script src="{{ asset('js/frequency-bars.js') }}"></script>
+    <script src="{{ asset('js/notes.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
   </body>
 </html>
